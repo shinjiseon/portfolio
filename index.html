@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOUR NAME — Portfolio</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__brand">
+    <a href="index.html" class="site-header__name">YOUR NAME</a>
+    <nav class="site-header__nav">
+      <a href="index.html" class="is-active">Work</a>
+      <a href="info.html">Info</a>
+    </nav>
+  </div>
+  <div class="site-header__contact">
+    <a href="mailto:hey@yourmail.com">hey@yourmail.com</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</header>
+
+<p class="intro">디자인과 브랜딩을 다루는 개인 포트폴리오입니다. 소개 문구를 이곳에 작성하세요.</p>
+
+<div class="grid-scroll" id="project-grid"></div>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> YOUR NAME</p>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Info — YOUR NAME</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__brand">
+    <a href="index.html" class="site-header__name">YOUR NAME</a>
+    <nav class="site-header__nav">
+      <a href="index.html">Work</a>
+      <a href="info.html" class="is-active">Info</a>
+    </nav>
+  </div>
+  <div class="site-header__contact">
+    <a href="mailto:hey@yourmail.com">hey@yourmail.com</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</header>
+
+<div class="info-content">
+  <h1>About</h1>
+  <p>본인 소개를 이곳에 작성하세요. 경력, 작업 방식, 관심 분야 등을 자유롭게 적을 수 있습니다.</p>
+  <p>Email: <a href="mailto:hey@yourmail.com">hey@yourmail.com</a><br>
+  Instagram: <a href="https://instagram.com" target="_blank" rel="noopener">@yourname</a></p>
+</div>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> YOUR NAME</p>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
