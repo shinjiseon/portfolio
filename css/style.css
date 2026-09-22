@@ -56,24 +56,18 @@ body.home { height: 100vh; display: flex; flex-direction: column; overflow: hidd
 .marquee-item__media {
   height: var(--gallery-height);
   overflow: hidden;
-  background: var(--placeholder);
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path .5s cubic-bezier(.215, .61, .355, 1);
-}
-.marquee-item.is-revealed .marquee-item__media {
-  clip-path: inset(0 0 0 0);
 }
 .marquee-item__media img,
 .marquee-item__media video {
   height: 100%;
   width: auto;
   display: block;
-  transform: translateY(-101%) scale(1.01);
+  transform: translateY(100%);
   transition: transform .5s cubic-bezier(.215, .61, .355, 1);
 }
 .marquee-item.is-revealed .marquee-item__media img,
 .marquee-item.is-revealed .marquee-item__media video {
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 .marquee-item__caption {
   margin-top: 12px;

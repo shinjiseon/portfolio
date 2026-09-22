@@ -101,8 +101,8 @@ function onTrackClick(e) {
   }
 }
 
-viewport.addEventListener("wheel", onWheel, { passive: false });
-viewport.addEventListener("pointerdown", onPointerDown);
+document.addEventListener("wheel", onWheel, { passive: false });
+document.addEventListener("pointerdown", onPointerDown);
 window.addEventListener("pointermove", onPointerMove);
 window.addEventListener("pointerup", onPointerUp);
 track.addEventListener("click", onTrackClick, true);
@@ -131,7 +131,7 @@ function updatePinnedCaption() {
     const rect = el.querySelector(".marquee-item__media").getBoundingClientRect();
     const left = rect.left - viewportRect.left;
     const right = rect.right - viewportRect.left;
-    if (left < 0 && right > 0) {
+    if (left < -1 && right > 0) {
       crossingItem = el;
       break;
     }
