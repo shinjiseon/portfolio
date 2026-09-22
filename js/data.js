@@ -35,7 +35,7 @@ export const PROJECTS = [
     slug: "project-three",
     title: "Project Three",
     category: "Campaign",
-    thumb: "https://picsum.photos/seed/project-three-thumb/1200/600",
+    thumb: "https://picsum.photos/seed/project-three-thumb/1000/620",
     role: "Art Direction, Motion",
     year: "2025",
     description: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Replace this with a real description of the project.",
