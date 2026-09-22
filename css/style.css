@@ -81,6 +81,7 @@ body.home { height: 100vh; display: flex; flex-direction: column; overflow: hidd
   transition: opacity .4s ease .15s;
 }
 .marquee-item.is-revealed .marquee-item__caption { opacity: 1; }
+.marquee-item.is-caption-pinned .marquee-item__caption { opacity: 0; }
 .marquee-item__title { font-size: 13px; font-weight: 600; }
 .marquee-item__category { font-size: 12px; color: var(--muted); }
 

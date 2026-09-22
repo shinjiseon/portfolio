@@ -107,17 +107,22 @@ window.addEventListener("pointermove", onPointerMove);
 window.addEventListener("pointerup", onPointerUp);
 track.addEventListener("click", onTrackClick, true);
 
+// --- Pinned caption for whichever item currently straddles the viewport's left edge ---
+// (declared before the IntersectionObserver below so its callback can clear stale pins)
+let pinnedEl = null;
+
 // --- Entrance animation: reveal image + caption whenever an item enters the viewport ---
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     entry.target.classList.toggle("is-revealed", entry.isIntersecting);
+    if (!entry.isIntersecting) {
+      entry.target.classList.remove("is-caption-pinned");
+      if (pinnedEl === entry.target) pinnedEl = null;
+    }
   });
 }, { root: viewport, threshold: 0.01 });
 
 items.forEach((el) => io.observe(el));
-
-// --- Pinned caption for whichever item currently straddles the viewport's left edge ---
-let currentPinnedSlug = null;
 
 function updatePinnedCaption() {
   const viewportRect = viewport.getBoundingClientRect();
@@ -131,14 +136,15 @@ function updatePinnedCaption() {
       break;
     }
   }
-  if (crossingItem) {
-    const slug = crossingItem.dataset.slug;
-    if (slug !== currentPinnedSlug) {
-      currentPinnedSlug = slug;
-      const project = PROJECTS.find((p) => p.slug === slug);
-      pinnedTitle.textContent = project.title;
-      pinnedCategory.textContent = project.category;
-    }
+  if (crossingItem && crossingItem !== pinnedEl) {
+    if (pinnedEl) pinnedEl.classList.remove("is-caption-pinned");
+    pinnedEl = crossingItem;
+    pinnedEl.classList.add("is-caption-pinned");
+    const project = PROJECTS.find((p) => p.slug === crossingItem.dataset.slug);
+    pinnedTitle.textContent = project.title;
+    pinnedCategory.textContent = project.category;
+  }
+  if (pinnedEl) {
     pinnedCaption.classList.add("is-visible");
   }
 }
