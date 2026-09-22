@@ -31,7 +31,7 @@ a:hover { opacity: .6; }
 .site-header__links a.is-active { color: var(--fg); }
 
 @media (max-width: 1024px) {
-  .site-header { padding: 20px var(--side-pad); font-size: 15px; flex-wrap: wrap; row-gap: 8px; }
+  .site-header { padding: 20px var(--side-pad); flex-wrap: wrap; row-gap: 8px; }
   .site-header__links { gap: 14px; }
 }
 
