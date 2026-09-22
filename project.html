@@ -9,23 +9,17 @@
 <body>
 <div class="project-topbar">
   <a href="index.html" class="project-topbar__logo">Portfolio</a>
-  <div class="project-topbar__meta">
-    <h1 id="project-title"></h1>
-    <div class="project-topbar__category" id="project-category"></div>
-    <a href="index.html" class="project-topbar__close">(Close)</a>
+  <h1 class="project-topbar__title" id="project-title"></h1>
+  <div class="project-topbar__category" id="project-category"></div>
+  <a href="index.html" class="project-topbar__close">(Close)</a>
+</div>
+<main class="project-main">
+  <div class="project-media" id="project-media"></div>
+  <div class="project-details">
+    <h3>Details</h3>
+    <p id="project-summary"></p>
   </div>
-</div>
-<div class="project-layout">
-  <aside class="project-sidebar">
-    <div class="project-sidebar__details">
-      <h3>Details</h3>
-      <p id="project-summary"></p>
-    </div>
-  </aside>
-  <main class="project-main">
-    <div class="project-media" id="project-media"></div>
-  </main>
-</div>
+</main>
 
 <script type="module" src="js/project.js"></script>
 </body>
