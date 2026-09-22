@@ -132,6 +132,7 @@ const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
 function updateCaptionDocking() {
   const viewportRect = viewport.getBoundingClientRect();
+  const sidePad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--side-pad"));
 
   for (const el of items) {
     const media = el.querySelector(".marquee-item__media").getBoundingClientRect();
@@ -140,7 +141,7 @@ function updateCaptionDocking() {
     const cardWidth = media.width;
     const captionWidth = caption.offsetWidth;
     const max = Math.max(0, cardWidth - captionWidth - 30);
-    const shift = clamp(-cardLeft, 0, max);
+    const shift = clamp(sidePad - cardLeft, 0, max);
     caption.style.transform = shift > 0 ? `translateX(${shift}px)` : "";
   }
 }
