@@ -113,6 +113,50 @@ const io = new IntersectionObserver((entries) => {
 
 items.forEach((el) => io.observe(el));
 
+// --- Caption docking: each caption normally rests 24px from its own image's
+// right edge (see CSS) and moves rigidly with it. Once that natural position
+// would scroll past the fixed left inset, freeze the caption there instead
+// of letting it keep sliding off-screen with its image, until the image
+// fully exits (the next item's caption then takes over the same spot). ---
+function updateCaptionDocking() {
+  const viewportRect = viewport.getBoundingClientRect();
+  const fixedLeft = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--side-pad"));
+
+  let winner = null;
+  let winnerMediaRight = -Infinity;
+
+  for (const el of items) {
+    const media = el.querySelector(".marquee-item__media").getBoundingClientRect();
+    const mediaRight = media.right - viewportRect.left;
+    const caption = el.querySelector(".marquee-item__caption");
+
+    if (mediaRight <= 0) {
+      caption.style.transform = "";
+      continue;
+    }
+
+    const captionWidth = caption.offsetWidth;
+    const naturalLeft = mediaRight - 24 - captionWidth;
+    const shift = fixedLeft - naturalLeft;
+
+    if (shift > 0) {
+      if (mediaRight > winnerMediaRight) {
+        if (winner) winner.caption.style.transform = "";
+        winner = { caption, shift };
+        winnerMediaRight = mediaRight;
+      } else {
+        caption.style.transform = "";
+      }
+    } else {
+      caption.style.transform = "";
+    }
+  }
+
+  if (winner) {
+    winner.caption.style.transform = `translateX(${winner.shift}px)`;
+  }
+}
+
 function tick(time) {
   if (lastTime === null) lastTime = time;
   const dt = (time - lastTime) / 1000;
@@ -129,6 +173,7 @@ function tick(time) {
   }
 
   track.style.transform = `translateX(${-offset}px)`;
+  updateCaptionDocking();
 
   requestAnimationFrame(tick);
 }
