@@ -104,10 +104,16 @@ window.addEventListener("pointermove", onPointerMove);
 window.addEventListener("pointerup", onPointerUp);
 track.addEventListener("click", onTrackClick, true);
 
-// --- Entrance animation: reveal image + caption whenever an item enters the viewport ---
+// --- Entrance animation: reveal image + caption the first time an item enters
+// the viewport. Only page load (or a real refresh) re-triggers it - once an
+// item has been revealed it stays revealed, even after it loops back around,
+// so scrolling/dragging past the loop point never replays the animation. ---
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    entry.target.classList.toggle("is-revealed", entry.isIntersecting);
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-revealed");
+      io.unobserve(entry.target);
+    }
   });
 }, { root: viewport, threshold: 0.01 });
 
