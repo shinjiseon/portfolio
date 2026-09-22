@@ -140,11 +140,12 @@ body.home { height: 100vh; display: flex; flex-direction: column; overflow: hidd
   white-space: pre-line;
 }
 
+.project-media { display: flex; flex-direction: column; gap: 14px; }
 .media-row--full img, .media-row--full video { width: 100%; display: block; }
 .media-row--split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  gap: 14px;
 }
 .media-row--split img, .media-row--split video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
