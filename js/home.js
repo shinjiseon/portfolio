@@ -62,8 +62,8 @@ let lastPointerTime = 0;
 function onWheel(e) {
   if (Math.abs(e.deltaY) < 1) return;
   e.preventDefault();
-  velocity += e.deltaY * 1.5;
-  velocity = Math.max(-800, Math.min(800, velocity));
+  velocity += e.deltaY * 4;
+  velocity = Math.max(-2400, Math.min(2400, velocity));
 }
 
 function onPointerDown(e) {
