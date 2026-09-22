@@ -110,7 +110,7 @@ body.home { height: 100vh; display: flex; flex-direction: column; overflow: hidd
   min-width: 0;
   box-sizing: border-box;
 }
-.project-topbar__title { flex: 0 0 auto; font-size: 36px; font-weight: 400; margin: 0; }
+.project-topbar__title { flex: 0 0 auto; font-size: 28px; font-weight: 400; margin: 0; }
 .project-topbar__category {
   position: absolute;
   left: 50%;
