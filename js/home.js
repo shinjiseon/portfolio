@@ -2,9 +2,6 @@ import { PROJECTS } from "./data.js";
 
 const track = document.getElementById("marquee-track");
 const viewport = document.getElementById("marquee-viewport");
-const pinnedCaption = document.getElementById("pinned-caption");
-const pinnedTitle = document.getElementById("pinned-title");
-const pinnedCategory = document.getElementById("pinned-category");
 
 const COPIES = 4;
 const items = [];
@@ -107,47 +104,14 @@ window.addEventListener("pointermove", onPointerMove);
 window.addEventListener("pointerup", onPointerUp);
 track.addEventListener("click", onTrackClick, true);
 
-// --- Pinned caption for whichever item currently straddles the viewport's left edge ---
-// (declared before the IntersectionObserver below so its callback can clear stale pins)
-let pinnedEl = null;
-
 // --- Entrance animation: reveal image + caption whenever an item enters the viewport ---
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     entry.target.classList.toggle("is-revealed", entry.isIntersecting);
-    if (!entry.isIntersecting) {
-      entry.target.classList.remove("is-caption-pinned");
-      if (pinnedEl === entry.target) pinnedEl = null;
-    }
   });
 }, { root: viewport, threshold: 0.01 });
 
 items.forEach((el) => io.observe(el));
-
-function updatePinnedCaption() {
-  const viewportRect = viewport.getBoundingClientRect();
-  let crossingItem = null;
-  for (const el of items) {
-    const rect = el.querySelector(".marquee-item__media").getBoundingClientRect();
-    const left = rect.left - viewportRect.left;
-    const right = rect.right - viewportRect.left;
-    if (left < -1 && right > 0) {
-      crossingItem = el;
-      break;
-    }
-  }
-  if (crossingItem && crossingItem !== pinnedEl) {
-    if (pinnedEl) pinnedEl.classList.remove("is-caption-pinned");
-    pinnedEl = crossingItem;
-    pinnedEl.classList.add("is-caption-pinned");
-    const project = PROJECTS.find((p) => p.slug === crossingItem.dataset.slug);
-    pinnedTitle.textContent = project.title;
-    pinnedCategory.textContent = project.category;
-  }
-  if (pinnedEl) {
-    pinnedCaption.classList.add("is-visible");
-  }
-}
 
 function tick(time) {
   if (lastTime === null) lastTime = time;
@@ -165,7 +129,6 @@ function tick(time) {
   }
 
   track.style.transform = `translateX(${-offset}px)`;
-  updatePinnedCaption();
 
   requestAnimationFrame(tick);
 }
