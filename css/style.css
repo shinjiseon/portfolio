@@ -9,7 +9,7 @@
   --topbar-height: 100px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   :root { --side-pad: 20px; --gallery-height: 660px; }
 }
 
@@ -30,7 +30,7 @@ a:hover { opacity: .6; }
 .site-header__links { display: flex; gap: 20px; color: var(--muted); }
 .site-header__links a.is-active { color: var(--fg); }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .site-header { padding: 20px var(--side-pad); font-size: 15px; flex-wrap: wrap; row-gap: 8px; }
   .site-header__links { gap: 14px; }
 }
@@ -154,7 +154,7 @@ body.home { height: 100vh; display: flex; flex-direction: column; overflow: hidd
 }
 .media-row--split img, .media-row--split video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   :root { --topbar-height: 130px; }
   .marquee-viewport { margin-top: 60px; }
 
