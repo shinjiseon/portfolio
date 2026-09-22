@@ -145,7 +145,7 @@ body.home { height: 100vh; display: flex; flex-direction: column; overflow: hidd
   white-space: pre-line;
 }
 
-.project-media { display: flex; flex-direction: column; gap: 14px; }
+.project-media { display: flex; flex-direction: column; gap: 14px; padding-right: var(--side-pad); box-sizing: border-box; }
 .media-row--full img, .media-row--full video { width: 100%; display: block; }
 .media-row--split {
   display: grid;
