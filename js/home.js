@@ -119,47 +119,29 @@ const io = new IntersectionObserver((entries) => {
 
 items.forEach((el) => io.observe(el));
 
-// --- Caption docking: each caption normally rests 24px from its own image's
-// right edge (see CSS) and moves rigidly with it. Once that natural position
-// would scroll past the fixed left inset, freeze the caption there instead
-// of letting it keep sliding off-screen with its image, until the image
-// fully exits (the next item's caption then takes over the same spot). ---
+// --- Sticky caption: each caption normally sits flush left under its own
+// image (transform none). As its card's left edge scrolls past the
+// viewport's left edge, the caption shifts right by exactly that amount so
+// it appears pinned in place while the image keeps sliding underneath it.
+// Once the caption would come within 30px of the card's right edge, the
+// shift stops growing and the caption exits together with its card.
+// clamp(scrolled - start, 0, cardWidth - captionWidth - 30), computed here
+// via live screen position instead of manual offset bookkeeping (which
+// works out to the same thing: scrolled - start === -cardLeft). ---
+const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+
 function updateCaptionDocking() {
   const viewportRect = viewport.getBoundingClientRect();
-  const fixedLeft = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--side-pad"));
-
-  let winner = null;
-  let winnerMediaRight = -Infinity;
 
   for (const el of items) {
     const media = el.querySelector(".marquee-item__media").getBoundingClientRect();
-    const mediaRight = media.right - viewportRect.left;
     const caption = el.querySelector(".marquee-item__caption");
-
-    if (mediaRight <= 0) {
-      caption.style.transform = "";
-      continue;
-    }
-
+    const cardLeft = media.left - viewportRect.left;
+    const cardWidth = media.width;
     const captionWidth = caption.offsetWidth;
-    const naturalLeft = mediaRight - 24 - captionWidth;
-    const shift = fixedLeft - naturalLeft;
-
-    if (shift > 0) {
-      if (mediaRight > winnerMediaRight) {
-        if (winner) winner.caption.style.transform = "";
-        winner = { caption, shift };
-        winnerMediaRight = mediaRight;
-      } else {
-        caption.style.transform = "";
-      }
-    } else {
-      caption.style.transform = "";
-    }
-  }
-
-  if (winner) {
-    winner.caption.style.transform = `translateX(${winner.shift}px)`;
+    const max = Math.max(0, cardWidth - captionWidth - 30);
+    const shift = clamp(-cardLeft, 0, max);
+    caption.style.transform = shift > 0 ? `translateX(${shift}px)` : "";
   }
 }
 
