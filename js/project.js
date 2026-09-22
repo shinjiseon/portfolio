@@ -8,33 +8,19 @@ if (index === -1) {
   window.location.href = "index.html";
 } else {
   const project = PROJECTS[index];
-  document.title = `${project.title} — YOUR NAME`;
-
-  const hero = document.getElementById("project-hero");
-  hero.src = project.hero;
-  hero.alt = project.title;
+  document.title = `${project.title} — Portfolio`;
 
   document.getElementById("project-title").textContent = project.title;
-  document.getElementById("project-description").textContent = project.description;
-  document.getElementById("project-meta").innerHTML = `
-    <div>${project.role}</div>
-    <div>${project.year}</div>
-  `;
+  document.getElementById("project-category").textContent = project.category;
+  document.getElementById("project-summary").textContent = project.description;
 
   const mediaContainer = document.getElementById("project-media");
-  mediaContainer.innerHTML = project.media.map((m) => {
-    const mediaTag = m.type === "video"
-      ? `<video src="${m.src}" autoplay loop muted playsinline></video>`
-      : `<img src="${m.src}" alt="${project.title}">`;
-    return `<figure>${mediaTag}<figcaption>${m.caption}</figcaption></figure>`;
+  mediaContainer.innerHTML = project.media.map((row) => {
+    const itemsHtml = row.items.map((m) => {
+      return m.type === "video"
+        ? `<video src="${m.src}" autoplay loop muted playsinline></video>`
+        : `<img src="${m.src}" alt="${m.caption || project.title}">`;
+    }).join("");
+    return `<div class="media-row media-row--${row.layout}">${itemsHtml}</div>`;
   }).join("");
-
-  const prev = PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
-  const next = PROJECTS[(index + 1) % PROJECTS.length];
-  const prevLink = document.getElementById("project-prev");
-  const nextLink = document.getElementById("project-next");
-  prevLink.href = `project.html?slug=${prev.slug}`;
-  prevLink.textContent = `← ${prev.title}`;
-  nextLink.href = `project.html?slug=${next.slug}`;
-  nextLink.textContent = `${next.title} →`;
 }

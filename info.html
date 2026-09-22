@@ -3,22 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Info — YOUR NAME</title>
+<title>Info — Portfolio</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header class="site-header">
-  <div class="site-header__brand">
-    <a href="index.html" class="site-header__name">YOUR NAME</a>
-    <nav class="site-header__nav">
-      <a href="index.html">Work</a>
-      <a href="info.html" class="is-active">Info</a>
-    </nav>
-  </div>
-  <div class="site-header__contact">
-    <a href="mailto:hey@yourmail.com">hey@yourmail.com</a>
+  <a href="index.html" class="site-header__logo">Portfolio</a>
+  <nav class="site-header__links">
+    <a href="info.html" class="is-active">Information</a>
     <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-  </div>
+    <a href="mailto:hey@yourmail.com">Email</a>
+  </nav>
 </header>
 
 <div class="info-content">
@@ -27,11 +22,5 @@
   <p>Email: <a href="mailto:hey@yourmail.com">hey@yourmail.com</a><br>
   Instagram: <a href="https://instagram.com" target="_blank" rel="noopener">@yourname</a></p>
 </div>
-
-<footer class="site-footer">
-  <p>© <span id="year"></span> YOUR NAME</p>
-</footer>
-
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

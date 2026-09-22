@@ -3,46 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project — YOUR NAME</title>
+<title>Project — Portfolio</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="site-header__brand">
-    <a href="index.html" class="site-header__name">YOUR NAME</a>
-    <nav class="site-header__nav">
-      <a href="index.html" class="is-active">Work</a>
-      <a href="info.html">Info</a>
-    </nav>
-  </div>
-  <div class="site-header__contact">
-    <a href="mailto:hey@yourmail.com">hey@yourmail.com</a>
-    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-  </div>
-</header>
-
-<img id="project-hero" class="project-hero" src="" alt="">
-
-<div class="project-head">
-  <div>
-    <h1 id="project-title"></h1>
-    <p id="project-description"></p>
-  </div>
-  <div class="project-meta" id="project-meta"></div>
+<div class="project-layout">
+  <aside class="project-sidebar">
+    <a href="index.html" class="project-sidebar__logo">Portfolio</a>
+    <div class="project-sidebar__details">
+      <h3>Details</h3>
+      <p id="project-summary"></p>
+    </div>
+  </aside>
+  <main class="project-main">
+    <div class="project-main__header">
+      <h1 id="project-title"></h1>
+      <div class="project-main__category" id="project-category"></div>
+      <a href="index.html" class="project-main__close">(Close)</a>
+    </div>
+    <div class="project-media" id="project-media"></div>
+  </main>
 </div>
 
-<div class="project-media" id="project-media"></div>
-
-<div class="project-nav">
-  <a id="project-prev" href="#"></a>
-  <a id="project-next" href="#"></a>
-</div>
-
-<footer class="site-footer">
-  <p>© <span id="year"></span> YOUR NAME</p>
-</footer>
-
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 <script type="module" src="js/project.js"></script>
 </body>
 </html>
