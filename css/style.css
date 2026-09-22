@@ -5,7 +5,7 @@
   --border: rgba(17, 17, 17, .12);
   --placeholder: #eeeeee;
   --side-pad: 64px;
-  --gallery-height: clamp(170px, 10.9vw, 285px);
+  --gallery-height: clamp(340px, 21.8vw, 570px);
   --topbar-height: 100px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
