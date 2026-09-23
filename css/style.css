@@ -8,10 +8,10 @@
   --gallery-height: clamp(272px, 17.44vw, 720px);
   --topbar-height: 100px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --fs-body: clamp(10.3px, calc(10.3px + 0.5356vw), 18px);
-  --fs-caption-title: clamp(9.6px, calc(9.6px + 0.4912vw), 16.7px);
-  --fs-caption-category: clamp(9px, calc(9px + 0.4462vw), 15.4px);
-  --fs-heading: clamp(14.1px, calc(14.1px + 0.8036vw), 25.7px);
+  --fs-body: clamp(9.2px, calc(9.2px + 0.4761vw), 16px);
+  --fs-caption-title: clamp(8.5px, calc(8.5px + 0.4366vw), 14.8px);
+  --fs-caption-category: clamp(8px, calc(8px + 0.3966vw), 13.7px);
+  --fs-heading: clamp(12.5px, calc(12.5px + 0.7143vw), 22.8px);
 }
 @media (max-width: 1024px) {
   :root { --side-pad: 10px; --gallery-height: clamp(160px, 46.4vw, 256px); }
