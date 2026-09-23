@@ -8,10 +8,10 @@
   --gallery-height: clamp(272px, 17.44vw, 720px);
   --topbar-height: 100px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --fs-body: clamp(12.8px, calc(12.8px + 0.6664vw), 22.4px);
-  --fs-caption-title: clamp(12px, calc(12px + 0.6112vw), 20.8px);
-  --fs-caption-category: clamp(11.2px, calc(11.2px + 0.5552vw), 19.2px);
-  --fs-heading: clamp(17.6px, calc(17.6px + 1vw), 32px);
+  --fs-body: clamp(10.3px, calc(10.3px + 0.5356vw), 18px);
+  --fs-caption-title: clamp(9.6px, calc(9.6px + 0.4912vw), 16.7px);
+  --fs-caption-category: clamp(9px, calc(9px + 0.4462vw), 15.4px);
+  --fs-heading: clamp(14.1px, calc(14.1px + 0.8036vw), 25.7px);
 }
 @media (max-width: 1024px) {
   :root { --side-pad: 20px; --gallery-height: clamp(160px, 46.4vw, 256px); }
@@ -58,7 +58,7 @@ body.home { height: 100vh; display: flex; flex-direction: column; overflow: hidd
   top: 0;
   left: 0;
   display: flex;
-  gap: 12px;
+  gap: 14px;
   will-change: transform;
 }
 .marquee-item { flex: 0 0 auto; display: block; }
@@ -180,8 +180,8 @@ body.home { height: 100vh; display: flex; flex-direction: column; overflow: hidd
     padding: 0 var(--side-pad);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
     margin-top: 20px;
   }
-  .media-row--split { grid-template-columns: 1fr; gap: 12px; }
+  .media-row--split { grid-template-columns: 1fr; gap: 14px; }
 }
