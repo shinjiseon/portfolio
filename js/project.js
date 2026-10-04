@@ -8,7 +8,7 @@ if (index === -1) {
   window.location.href = "index.html";
 } else {
   const project = PROJECTS[index];
-  document.title = `${project.title} — Portfolio`;
+  document.title = `${project.title} — Shin`;
 
   document.getElementById("project-title").textContent = project.title;
   document.getElementById("project-category").textContent = project.category;
